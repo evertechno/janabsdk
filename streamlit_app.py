@@ -39,7 +39,9 @@ def authenticate_gsc():
                 },
                 SCOPES,
             )
-            creds = flow.run_local_server(port=0)
+            
+            # Use run_console() for headless environments or if the browser is not available
+            creds = flow.run_console()
 
         # Save the credentials for the next run
         with open('token.pkl', 'wb') as token:
