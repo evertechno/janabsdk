@@ -40,8 +40,9 @@ def authenticate_gsc():
                 SCOPES,
             )
             
-            # Use run_console() for headless environments or if the browser is not available
-            creds = flow.run_console()
+            # Use run_local_server() for a headless authentication flow.
+            # Google will redirect to a local server running on your machine after the authentication.
+            creds = flow.run_local_server(port=0)
 
         # Save the credentials for the next run
         with open('token.pkl', 'wb') as token:
